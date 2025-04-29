@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title -->
+    <title>Mohsin Browser</title>
+
+    <!-- logo -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+
+    <!-- built in css -->
+    <link rel="stylesheet" href="assets/fonts/WantedSansFont.css">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="styles/css/index.css">
+
+    <!-- js -->
+    <script src="styles/js/index.js"></script>
+  </head>
+  <body>
+    <div class="titlebar">
+      <div class="titlebar-drag">
+        <div class="logo-side">
+          <img src="assets/images/logo.png">
+          Mohsin Browser
+        </div>
+        <div class="search-input-field">
+          <button id="back-button" class="top-bar-button">
+            <svg width="21" height="38" viewBox="0 0 21 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.7071 1.70711C21.0976 1.31658 21.0976 0.683418 20.7071 0.292893C20.3166 -0.0976311 19.6834 -0.0976311 19.2929 0.292893L20.7071 1.70711ZM2 19L1.29289 18.2929L0.585786 19L1.29289 19.7071L2 19ZM20 1L19.2929 0.292893L1.29289 18.2929L2 19L2.70711 19.7071L20.7071 1.70711L20 1ZM2 19L1.29289 19.7071L19.2929 37.7071L20 37L20.7071 36.2929L2.70711 18.2929L2 19Z" fill="white"/>
+            </svg>              
+          </button>
+          <button id="next-button" class="top-bar-button">
+            <svg width="21" height="38" viewBox="0 0 21 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.292893 1.70711C-0.0976316 1.31658 -0.0976316 0.683418 0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L0.292893 1.70711ZM19 19L19.7071 18.2929L20.4142 19L19.7071 19.7071L19 19ZM0.999999 1L1.70711 0.292893L19.7071 18.2929L19 19L18.2929 19.7071L0.292893 1.70711L0.999999 1ZM19 19L19.7071 19.7071L1.70711 37.7071L0.999999 37L0.292893 36.2929L18.2929 18.2929L19 19Z" fill="white"/>
+            </svg>              
+          </button>
+          <button id="reload-button" class="top-bar-button">
+            <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36 19.6667C36 27.6667 29.2692 37 18.5 37C7.73077 37 1 27.6667 1 19.6667C1 11.6667 7.73077 2.33333 18.5 2.33333C25.2308 2.33333 30.6154 6.33333 33.3077 10.3333M33.3077 10.3333L23.8846 11.6667M33.3077 10.3333L34.6538 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="input-section">
+            <input id="url-input" type="url" placeholder="Search ...">
+            <ul id="suggestions" class="search-suggestion"></ul>
+          </div>
+          <div class="download-section">
+            <button id="download-button" class="top-bar-button">
+              <svg width="39" height="53" viewBox="0 0 39 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.25 33.25L19.25 51.25L37.25 33.25" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M19.25 51L19.25 0.999998" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>                
+            </button>
+            <div id="dropdownCard" class="dropdown-card">
+              <h4>Downloads</h4>
+              <div id="download-progress">
+
+              </div>
+            </div>
+          </div>
+
+          <div id="profileSection" class="profile-section">
+            <button id="profile-button" class="top-bar-button">
+              <img id="profilePic"/>
+            </button>
+            <div id="pdropdownCard" class="dropdown-card">
+              <webview id="getdata" partition="persist:MohsinBrowserProfiles" style="display: none;"></webview>
+              <div>
+                <div id="userInfo">
+                  <img id="profilePicc"/>
+                  <h2 id="name"></h2>
+                  <p id="email"></p>
+                </div>
+                <button id="manage-account">Manage Account</button>
+                <button id="signout-account">Sign out</button>
+              </div>
+            </div>
+          </div>
+          <div id="historySection" class="profile-section">
+            <button id="history-button" class="top-bar-button">
+              <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 19.6667C1 27.6667 7.73077 37 18.5 37C29.2692 37 36 27.6667 36 19.6667C36 11.6667 29.2692 2.33333 18.5 2.33333C11.7692 2.33333 6.38462 6.33333 3.69231 10.3333M3.69231 10.3333L13.1154 11.6667M3.69231 10.3333L2.34615 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19.5 11V22L14 27.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div id="hdropdownCard" class="dropdown-card">
+              <h4>History</h4>
+              <div id="history">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="window-controls">
+        <button id="minimize-button" class="control-button">
+          <svg width="27" height="2" viewBox="0 0 27 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1H26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button id="maximize-button" class="control-button">
+          <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="25" height="25" rx="3" stroke="white" stroke-width="2"/>
+          </svg>
+        </button>
+        <button id="close-button" class="control-button">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 19L19 1.32233" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M1 1L19 18.6777" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="tab-section">
+      <div id="tabs-list">
+        <button id="add-tab-button">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 26.7275L14.2279 1.49962" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M1.27246 14L26.5004 13.7721" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="content-section">
+      <div class="content">
+      
+      </div>
+      <div id="bgg" class="bg">
+
+      </div>
+    </div>
+    <script>
+      const webview = document.getElementById('webview');
+
+webview.addEventListener('dom-ready', () => {
+  webview.getWebContents().then(contents => {
+    // Allow zoom only inside webview
+    contents.setVisualZoomLevelLimits(1, 3); // allow pinch zoom from 100% to 300%
+    contents.setZoomFactor(1.0); // optional: reset zoom to default
+  });
+});
+      async function getGoogleSuggestions(query) {
+        const response = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        return data[1].slice(0, 10); // Max 10 suggestions
+      }
+      
+      async function getWikiThumbnail(query) {
+  try {
+    const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&piprop=thumbnail&pithumbsize=32`);
+    const data = await response.json();
+    
+    const pages = data.query?.pages;
+    if (!pages) return null;
+
+    const page = Object.values(pages)[0];
+    return page?.thumbnail?.source || null;
+  } catch (e) {
+    console.error('Wiki thumbnail fetch error:', e);
+    return null;
+  }
+}
+
+let currentFocusIndex = -1;
+async function showSuggestions(query) {
+  const suggestionsBox = document.getElementById('suggestions');
+
+  if (!query.trim()) {
+    suggestionsBox.style.display = 'none';
+    return;
+  }
+
+  if (query.startsWith('http') || query.startsWith('https://www') || query.startsWith('http://www')) {
+    suggestionsBox.style.display = 'none';
+    return;
+  }
+
+  const suggestions = await getGoogleSuggestions(query);
+
+  suggestionsBox.innerHTML = '';
+  currentFocusIndex = -1;
+
+  // Always first: user's own input
+  const userLi = document.createElement('li');
+  userLi.style.display = 'flex';
+  userLi.style.alignItems = 'center';
+  userLi.style.padding = '8px';
+  userLi.style.cursor = 'pointer';
+
+  const userImg = document.createElement('img');
+  userImg.src = 'assets/images/placeholder_logo.png'; // Default placeholder
+  const userSpan = document.createElement('span');
+  userSpan.textContent = query;
+
+  userLi.appendChild(userImg);
+  userLi.appendChild(userSpan);
+  suggestionsBox.appendChild(userLi);
+
+  // Fetch thumbnail for user's query too
+  getWikiThumbnail(query).then(thumbnail => {
+    if (thumbnail) {
+      userImg.src = thumbnail;
+    }
+  });
+
+  // Now: Google Suggestions
+  for (const suggestion of suggestions) {
+    const li = document.createElement('li');
+    li.style.display = 'flex';
+    li.style.alignItems = 'center';
+    li.style.padding = '8px';
+    li.style.cursor = 'pointer';
+
+    const img = document.createElement('img');
+    img.src = 'assets/images/placeholder_logo.png';
+
+    const span = document.createElement('span');
+    span.textContent = suggestion;
+
+    li.appendChild(img);
+    li.appendChild(span);
+    suggestionsBox.appendChild(li);
+
+    // Fetch Wikipedia thumbnail
+    getWikiThumbnail(suggestion).then(thumbnail => {
+      if (thumbnail) {
+        img.src = thumbnail;
+      }
+    });
+  }
+
+  // Always highlight first li (user input)
+  highlightSuggestion(0);
+
+  suggestionsBox.style.display = 'block'; // Don't forget to show suggestions
+
+function highlightSuggestion(index) {
+  const suggestionsBox = document.getElementById('suggestions');
+  const items = suggestionsBox.querySelectorAll('li');
+
+  items.forEach((item, i) => {
+    item.style.background = i === index ? '#3a3a3a' : ''; // Highlight selected
+  });
+
+  currentFocusIndex = index;
+}
+
+      
+        suggestionsBox.style.display = suggestions.length ? 'block' : 'none';
+      }
+      
+      const input = document.getElementById('url-input');
+
+      
+      let debounceTimer = null;
+      document.getElementById('url-input').addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          const query = document.getElementById('url-input').value.trim();
+          showSuggestions(query);
+        }, 150); // 150ms debounce
+      });
+
+      const suggestionsBox = document.getElementById('suggestions');
+
+  suggestionsBox.addEventListener('mousedown', (event) => {
+    const clickedLi = event.target.closest('li');
+    if (clickedLi) {
+      const suggestionText = clickedLi.querySelector('span')?.textContent || '';
+      document.getElementById('url-input').value = suggestionText;
+      const targetUrl = `https://www.google.com/search?q=${encodeURIComponent(suggestionText)}`;
+  
+      const activeWebview = document.querySelector('webview.active');
+      if (activeWebview) {
+        activeWebview.loadURL(targetUrl);
+        urlInput.blur();
+      }
+    }
+  });
+
+  input.addEventListener('blur', () => {
+        setTimeout(() => {
+          document.getElementById('suggestions').style.display = 'none';
+        }, 200);
+      });
+
+
+      </script>
+  </body>
+</html>
